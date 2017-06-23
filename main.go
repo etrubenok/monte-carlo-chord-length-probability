@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"math"
+	"math/rand"
 	"time"
 )
 
@@ -12,15 +12,13 @@ func calcMonteCarloForChordLargerThanInscribedEquilateralTriangle(n int, ch chan
 	a := 0
 	for i := 0; i < n; i++ {
 		rand := rand.Float64()
-		c := 2 * r * math.Sin(rand * math.Pi / 2)
-		if c > r * math.Sqrt(3) {
+		c := 2 * r * math.Sin(rand*math.Pi/2)
+		if c > r*math.Sqrt(3) {
 			a += 1
 		}
 	}
 	ch <- a
 }
-
-
 
 func main() {
 	st := time.Now().UnixNano()
@@ -39,6 +37,6 @@ func main() {
 	}
 
 	fmt.Printf("a: %d\n", a)
-	fmt.Printf("probability: %f\n", float64(a) / float64(n*parallel))
+	fmt.Printf("probability: %f\n", float64(a)/float64(n*parallel))
 	fmt.Printf("Processed in %d seconds\n", (time.Now().UnixNano()-st)/int64(time.Second))
 }
